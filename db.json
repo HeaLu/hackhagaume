@@ -1,0 +1,215 @@
+{
+  "events": [
+    {
+      "start": "2021-03-31T03:00:00.000Z",
+      "end": "2021-03-31T11:00:00.000Z",
+      "allDay": false,
+      "resourceId": 2,
+      "status": "confirmed",
+      "user": 1,
+      "style": {
+        "backgroundColor": "#FF0000",
+        "color": "#FFF",
+        "opacity": 1
+      },
+      "id": 1
+    },
+    {
+      "start": "2021-04-01T04:30:00.000Z",
+      "end": "2021-04-01T14:00:00.000Z",
+      "allDay": false,
+      "resourceId": 1,
+      "status": "pending",
+      "user": 2,
+      "style": {
+        "backgroundColor": "#FF0000",
+        "color": "#FFF",
+        "opacity": 0.5
+      },
+      "id": 2
+    }
+  ],
+  "types": [
+    {
+      "id": 1,
+      "label": "Salles"
+    },
+    {
+      "id": 2,
+      "label": "Ordinateurs"
+    },
+    {
+      "id": 3,
+      "label": "FabLab"
+    },
+    {
+      "id": 4,
+      "label": "Divers"
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "label": "Bureau 4",
+      "type": 1,
+      "admin": 1,
+      "color": "#092e3d"
+    },
+    {
+      "id": 2,
+      "label": "Salle de réunion",
+      "type": 1,
+      "admin": 1,
+      "color": "#AC6A8D"
+    },
+    {
+      "id": 3,
+      "label": "Box 1",
+      "type": 1,
+      "admin": 1,
+      "color": "#09AC2A"
+    },
+    {
+      "id": 4,
+      "label": "Box 2",
+      "type": 1,
+      "admin": 1,
+      "color": "#9D254B"
+    },
+    {
+      "id": 5,
+      "label": "Box 3",
+      "type": 1,
+      "admin": 1,
+      "color": "#915A75"
+    },
+    {
+      "id": 6,
+      "label": "FabLab",
+      "type": 1,
+      "admin": 1,
+      "color": "#5FFDB2"
+    },
+    {
+      "id": 7,
+      "label": "Salle de spectacle",
+      "type": 1,
+      "admin": 1,
+      "color": "#38FBFE"
+    },
+    {
+      "id": 8,
+      "label": "Poste 1",
+      "type": 2,
+      "admin": 1,
+      "color": "#6DC920"
+    },
+    {
+      "id": 9,
+      "label": "Poste 2",
+      "type": 2,
+      "admin": 1,
+      "color": "#9C6F56"
+    },
+    {
+      "id": 10,
+      "label": "Poste 3",
+      "type": 2,
+      "admin": 1,
+      "color": "#6B4140"
+    },
+    {
+      "id": 11,
+      "label": "Poste 4",
+      "type": 2,
+      "admin": 1,
+      "color": "#CE9652"
+    },
+    {
+      "id": 12,
+      "label": "Découpeuse laser",
+      "type": 3,
+      "admin": 2,
+      "color": "#93B21C"
+    },
+    {
+      "id": 13,
+      "label": "Grosse imprimante",
+      "type": 3,
+      "admin": 2,
+      "color": "#E43BB3"
+    },
+    {
+      "id": 14,
+      "label": "Moyenne imprimante",
+      "type": 3,
+      "admin": 2,
+      "color": "#6669AA"
+    },
+    {
+      "id": 15,
+      "label": "Petite imprimante",
+      "type": 3,
+      "admin": 2,
+      "color": "#5B578F"
+    },
+    {
+      "id": 16,
+      "label": "Machine à raclette",
+      "type": 4,
+      "admin": 3,
+      "color": "#BCE730"
+    },
+    {
+      "id": 17,
+      "label": "Tireuse à bière",
+      "type": 4,
+      "admin": 3,
+      "color": "#A1309B"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "super.admin@gmail.com",
+      "password": "test",
+      "filters": [
+        3,
+        2,
+        7,
+        6,
+        4,
+        5,
+        1
+      ],
+      "admin": true
+    },
+    {
+      "id": 2,
+      "email": "gestionnaire.fablab@gmail.com",
+      "password": "test",
+      "filters": [
+        7,
+        1,
+        2
+      ],
+      "admin": false
+    },
+    {
+      "id": 3,
+      "email": "utilisateur.preteur@gmail.com",
+      "password": "test",
+      "filters": [],
+      "admin": false
+    },
+    {
+      "id": 4,
+      "email": "simple.utilisateur@gmail.com",
+      "password": "test",
+      "filters": [
+        1
+      ],
+      "admin": false
+    }
+  ]
+}
