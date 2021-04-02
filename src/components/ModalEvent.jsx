@@ -113,19 +113,18 @@ const ModalEvent = (props) => {
               <InputLabel htmlFor="grouped-native-select">Ressource</InputLabel>
               <Select fullWidth native defaultValue={event.resourceId === 0 ? "": event.resourceId} name="resourceId" onChange={e => handleChangeText(e)} required>              
                 <option aria-label="None" value="" />
-                { props.resourcesTypes.map(type => {
-                  return (
-                    <optgroup label={type.label} key={type.id}>
-                      {props.resources.filter(resource => resource.type === type.id).map(resource => {
-                        return (
-                          <option key={resource.id} value={resource.id}>{resource.label}</option>
-                        )
-                      })}
-                    </optgroup>
-                  )
-                })
-
-                }
+                <optgroup label="Salles">
+                  {props.rooms.map(room => {
+                      <option key={room.id} value={room.id}>{room.label}</option>
+                    })
+                  }
+                </optgroup>
+                <optgroup label="Ressources">
+                  {props.resources.map(resource => {
+                      <option key={resource.id} value={resource.id}>{resource.label}</option>
+                    })
+                  }
+                </optgroup>
               </Select>
             </FormControl>
           </Grid>

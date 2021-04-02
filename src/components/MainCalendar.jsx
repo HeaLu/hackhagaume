@@ -49,7 +49,7 @@ const MainCalendar = (props) => {
           resources={props.resources}
           resourceIdAccessor="id"
           resourceTitleAccessor="label"
-          style={{ height: 900,width: '95%' }}
+          style={{ height: 500,width: '95%' }}
           messages={messages}
           culture="fr"
           localizer={localizer}

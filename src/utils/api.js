@@ -5,8 +5,8 @@ export async function getResources () {
   return retour.data
 }
 
-export async function getResourcesTypes () {
-  const retour = await axios.get('http://localhost:8000/types')
+export async function getRooms () {
+  const retour = await axios.get('http://localhost:8000/rooms')
   return retour.data
 }
 

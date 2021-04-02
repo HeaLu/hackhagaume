@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { AppBar, Container, Grid, makeStyles, Paper, TextField, Toolbar } from '@material-ui/core'
+import { AppBar, Button, Container, Grid, Link, makeStyles, Paper, TextField, Toolbar } from '@material-ui/core'
 //import Navigation from '../components/Navigation'
 import RessourcesList from '../components/ResourcesList';
 import MainCalendar from '../components/MainCalendar';
-import { getResources, getResourcesTypes, getUsers, putUser, getEvents, postEvent } from '../utils/api'
+import { getResources, getRooms, getUsers, putUser, getEvents, postEvent } from '../utils/api'
 import ModalEvent from '../components/ModalEvent';
+import Assistant from '../components/Assistant';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,9 +18,12 @@ const Home = () => {
   const [users, setUsers] = useState([])
   const [events, setEvents] = useState([])
   const [userActif, setUserActif] = useState(1)
-  const [resourcesTypes, setResourcesTypes] = useState([])
+  const [rooms, setRooms] = useState([])
   const [resources, setResources] = useState([])
-  const [filters, setFilters] = useState([])
+  const [filters, setFilters] = useState({
+    rooms: [],
+    resources: []
+  })
   const [openModal, setOpenModal] = useState(false)
   const [event, setEvent] = useState({
     id: 0,
@@ -29,6 +33,7 @@ const Home = () => {
     title: "",
     description: ""
   })
+  const [module, setModule] = useState("assistant")
 
 
   useEffect(() => {
@@ -61,23 +66,24 @@ const Home = () => {
       setResources(data)
     }
 
-    const fetchResourcesTypes = async () => {
-      const data = await getResourcesTypes()
-      setResourcesTypes(data)
+    const fetchRooms = async () => {
+      const data = await getRooms()
+      console.log(data)
+      setRooms(data)
     }
 
     fetchResources()
-    fetchResourcesTypes()
+    fetchRooms()
     fetchUsers()
   }, [])
 
-  const handleChangeFilters = async (id) => {
-    let newfilters = [...filters]
-    const index = newfilters.indexOf(id)
+  const handleChangeFilters = async (type, id) => {
+    let newfilters = {...filters}
+    const index = newfilters[type].indexOf(id)
     if (index === -1) {
-      newfilters.push(id)
+      newfilters[type].push(id)
     } else {
-      newfilters.splice(index, 1)
+      newfilters[type].splice(index, 1)
     }
 
     setFilters(newfilters)
@@ -167,22 +173,34 @@ const Home = () => {
         <AppBar position="static">
           <Toolbar variant="dense">
             <TextField label="Utilisateur" value={userActif} onChange={e => setUserActif(parseInt(e.target.value))} />
+            <Button href="#" onClick={() => setModule("assistant")} color="inherit">Assistant</Button>
+            {isSuperAdmin(userActif) &&  
+              <Button href="#" onClick={() => setModule("calendar")} color="inherit">Calendrier</Button>
+            }
           </Toolbar>
         </AppBar>
-        <Grid container spacing={3}>
-          <Grid item xs={2}>
-            <Paper className={classes.root}>
-              <RessourcesList filters={filters} resourcesTypes={resourcesTypes} resources={resources} changeFilters={handleChangeFilters} />
-            </Paper>
+        {module === "calendar" &&
+        <>
+          <Grid container spacing={3}>
+            <Grid item xs={2}>
+              <Paper className={classes.root}>
+                <RessourcesList filters={filters} rooms={rooms} resources={resources} changeFilters={handleChangeFilters} />
+              </Paper>
+            </Grid>
+            <Grid item xs={10}>
+              <Paper className={classes.root}>
+                <MainCalendar rooms={rooms.filter(room => filters["rooms"].indexOf(room.id) !== -1)} resources={resources.filter(resource => filters["resources"].indexOf(resource.id) !== -1)} handleModifyEvent={handleModifyEvent} handleCreateEvent={handleCreateEvent} events={(events.filter(event => (filters["resources"].indexOf(event.resourceId) !== -1) || filters["rooms"].indexOf(event.resourceId) !== -1))}/>        
+              </Paper>
+            </Grid>
           </Grid>
-          <Grid item xs={10}>
-            <Paper className={classes.root}>
-              <MainCalendar resources={resources.filter(resource => filters.indexOf(resource.id) !== -1)} handleModifyEvent={handleModifyEvent} handleCreateEvent={handleCreateEvent} events={events.filter(event => filters.indexOf(event.resourceId) !== -1)}/>        
-            </Paper>
-          </Grid>
-        </Grid>
-      </Container>
-      <ModalEvent open={openModal} event={event} resources={resources} resourcesTypes={resourcesTypes} handleConfirm={handleConfirmEvent} handleCancel={() => setOpenModal(false)} />
+        <ModalEvent open={openModal} event={event} resources={resources} rooms={rooms} handleConfirm={handleConfirmEvent} handleCancel={() => setOpenModal(false)} />
+        </>
+        }
+        {module === "assistant" &&
+          <Assistant events={events} resources={resources} rooms={rooms} isAdmin={isSuperAdmin(userActif)} handleCreateEvent={handleCreateEvent} />
+        }
+        </Container>
+        
     </div>
   );
 };
