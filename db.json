@@ -1,24 +1,28 @@
 {
   "events": [
     {
-      "start": "2021-03-31T03:00:00.000Z",
-      "end": "2021-03-31T11:00:00.000Z",
+      "start": "2021-04-03T14:45:21.832Z",
+      "end": "2021-04-03T18:45:21.832Z",
+      "qty": "5",
+      "resourceId": "s7",
       "allDay": false,
-      "resourceId": 2,
-      "status": "confirmed",
-      "user": 1,
+      "title": "HackaGaume",
+      "status": "pending",
+      "user": 2,
       "style": {
         "backgroundColor": "#FF0000",
         "color": "#FFF",
-        "opacity": 1
+        "opacity": 0.5
       },
       "id": 1
     },
     {
-      "start": "2021-04-01T04:30:00.000Z",
-      "end": "2021-04-01T14:00:00.000Z",
+      "start": "2021-04-03T14:45:21.832Z",
+      "end": "2021-04-03T18:45:21.832Z",
+      "qty": "5",
+      "resourceId": "r3",
       "allDay": false,
-      "resourceId": 1,
+      "title": "HackaGaume",
       "status": "pending",
       "user": 2,
       "style": {
@@ -29,26 +33,28 @@
       "id": 2
     },
     {
-      "start": "2021-04-08T03:00:00.000Z",
-      "end": "2021-04-08T10:30:00.000Z",
+      "start": "2021-04-03T14:45:21.832Z",
+      "end": "2021-04-03T18:45:21.832Z",
+      "qty": "5",
+      "resourceId": "r4",
       "allDay": false,
-      "resourceId": 1,
-      "title": "parce que",
-      "status": "confirmed",
-      "user": 1,
+      "title": "HackaGaume",
+      "status": "pending",
+      "user": 2,
       "style": {
         "backgroundColor": "#FF0000",
         "color": "#FFF",
-        "opacity": 1
+        "opacity": 0.5
       },
       "id": 3
     },
     {
-      "start": "2021-04-09T04:00:00.000Z",
-      "end": "2021-04-09T09:30:00.000Z",
+      "start": "2021-04-03T14:45:21.832Z",
+      "end": "2021-04-03T18:45:21.832Z",
+      "qty": "5",
+      "resourceId": "r8",
       "allDay": false,
-      "resourceId": 1,
-      "title": "parce que",
+      "title": "HackaGaume",
       "status": "pending",
       "user": 2,
       "style": {
@@ -59,39 +65,44 @@
       "id": 4
     },
     {
-      "start": "2021-04-07T04:00:00.000Z",
-      "end": "2021-04-07T11:00:00.000Z",
+      "start": "2021-04-03T14:45:21.832Z",
+      "end": "2021-04-03T18:45:21.832Z",
+      "qty": "5",
+      "resourceId": "r10",
       "allDay": false,
-      "resourceId": 1,
-      "title": "resa bidule",
-      "status": "confirmed",
-      "user": 1,
+      "title": "HackaGaume",
+      "status": "pending",
+      "user": 2,
       "style": {
         "backgroundColor": "#FF0000",
         "color": "#FFF",
-        "opacity": 1
+        "opacity": 0.5
       },
       "id": 5
     },
     {
-      "start": "2021-03-31T02:30:00.000Z",
-      "end": "2021-03-31T07:00:00.000Z",
+      "start": "2021-04-03T14:45:21.832Z",
+      "end": "2021-04-03T18:45:21.832Z",
+      "qty": "5",
+      "resourceId": "r11",
       "allDay": false,
-      "resourceId": 1,
-      "status": "confirmed",
-      "user": 1,
+      "title": "HackaGaume",
+      "status": "pending",
+      "user": 2,
       "style": {
         "backgroundColor": "#FF0000",
         "color": "#FFF",
-        "opacity": 1
+        "opacity": 0.5
       },
       "id": 6
     },
     {
-      "start": "2021-04-03T02:30:00.000Z",
-      "end": "2021-04-03T06:30:00.000Z",
+      "start": "2021-04-03T14:45:21.832Z",
+      "end": "2021-04-03T18:45:21.832Z",
+      "qty": "5",
+      "resourceId": "r13",
       "allDay": false,
-      "resourceId": 1,
+      "title": "HackaGaume",
       "status": "pending",
       "user": 2,
       "style": {
@@ -102,10 +113,12 @@
       "id": 7
     },
     {
-      "start": "2021-04-02T05:00:00.000Z",
-      "end": "2021-04-02T12:00:00.000Z",
+      "start": "2021-04-03T14:45:21.832Z",
+      "end": "2021-04-03T18:45:21.832Z",
+      "qty": "5",
+      "resourceId": "r12",
       "allDay": false,
-      "resourceId": 2,
+      "title": "HackaGaume",
       "status": "pending",
       "user": 2,
       "style": {
@@ -170,46 +183,210 @@
   "resources": [
     {
       "id": 1,
-      "label": "Vidéoprojecteur",
+      "label": "Fond vert",
       "admin": 1,
       "color": "#6DC920",
       "rooms": [
         2,
+        3,
+        4,
+        5,
+        6,
         7
       ]
     },
     {
       "id": 2,
-      "label": "Découpeuse laser",
-      "admin": 2,
-      "color": "#93B21C",
+      "label": "iMac",
+      "admin": 1,
+      "color": "#6DC920",
       "rooms": [
-        6
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
       ]
     },
     {
       "id": 3,
-      "label": "Grosse imprimante",
-      "admin": 2,
-      "color": "#E43BB3",
+      "label": "Ordinateur portable",
+      "admin": 1,
+      "color": "#6DC920",
       "rooms": [
-        6
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
       ]
     },
     {
       "id": 4,
-      "label": "Moyenne imprimante",
-      "admin": 2,
-      "color": "#6669AA",
+      "label": "Écran",
+      "admin": 1,
+      "color": "#6DC920",
+      "rooms": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "id": 5,
+      "label": "Poste PC",
+      "admin": 1,
+      "color": "#6DC920",
+      "rooms": [
+        3,
+        5
+      ]
+    },
+    {
+      "id": 6,
+      "label": "Appareil photo",
+      "admin": 1,
+      "color": "#6DC920",
+      "rooms": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "id": 7,
+      "label": "Micro",
+      "admin": 1,
+      "color": "#6DC920",
+      "rooms": [
+        7
+      ]
+    },
+    {
+      "id": 8,
+      "label": "Enceinte",
+      "admin": 1,
+      "color": "#6DC920",
+      "rooms": [
+        7
+      ]
+    },
+    {
+      "id": 9,
+      "label": "Lumière",
+      "admin": 1,
+      "color": "#6DC920",
+      "rooms": [
+        7
+      ]
+    },
+    {
+      "id": 10,
+      "label": "Outil de visioconférence",
+      "admin": 1,
+      "color": "#6DC920",
+      "rooms": [
+        1,
+        2,
+        6,
+        7
+      ]
+    },
+    {
+      "id": 11,
+      "label": "Vidéoprojecteur",
+      "admin": 1,
+      "color": "#6DC920",
+      "rooms": [
+        6,
+        7
+      ]
+    },
+    {
+      "id": 12,
+      "label": "Paperboard",
+      "admin": 1,
+      "color": "#6DC920",
+      "rooms": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "id": 13,
+      "label": "Cafetière",
+      "admin": 1,
+      "color": "#6DC920",
+      "rooms": [
+        2,
+        6,
+        7
+      ]
+    },
+    {
+      "id": 14,
+      "label": "Micro pieuvre",
+      "admin": 1,
+      "color": "#6DC920",
+      "rooms": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "id": 15,
+      "label": "Bouilloire",
+      "admin": 1,
+      "color": "#6DC920",
+      "rooms": [
+        2,
+        6,
+        7
+      ]
+    },
+    {
+      "id": 16,
+      "label": "Imprimante 3D",
+      "admin": 1,
+      "color": "#6DC920",
       "rooms": [
         6
       ]
     },
     {
-      "id": 5,
-      "label": "Petite imprimante",
-      "admin": 2,
-      "color": "#5B578F",
+      "id": 17,
+      "label": "Découpeuse laser",
+      "admin": 1,
+      "color": "#6DC920",
+      "rooms": [
+        6
+      ]
+    },
+    {
+      "id": 16,
+      "label": "Brodeuse numérique",
+      "admin": 1,
+      "color": "#6DC920",
       "rooms": [
         6
       ]
@@ -218,51 +395,36 @@
   "users": [
     {
       "id": 1,
-      "email": "super.admin@gmail.com",
-      "password": "test",
+      "admin": true,
       "filters": {
         "rooms": [
-          2,
+          7
+        ],
+        "resources": [
+          6,
           1,
+          2,
           3,
           4,
           5,
-          6,
-          7
-        ],
-        "resources": []
-      },
-      "admin": true
+          8,
+          7,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ]
+      }
     },
     {
       "id": 2,
-      "email": "gestionnaire.fablab@gmail.com",
-      "password": "test",
+      "admin": false,
       "filters": {
         "rooms": [],
         "resources": []
-      },
-      "admin": false
-    },
-    {
-      "id": 3,
-      "email": "utilisateur.preteur@gmail.com",
-      "password": "test",
-      "filters": {
-        "rooms": [],
-        "resources": []
-      },
-      "admin": false
-    },
-    {
-      "id": 4,
-      "email": "simple.utilisateur@gmail.com",
-      "password": "test",
-      "filters": {
-        "rooms": [],
-        "resources": []
-      },
-      "admin": false
+      }
     }
   ]
 }

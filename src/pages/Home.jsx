@@ -1,15 +1,53 @@
 import React, { useEffect, useState } from 'react';
-import { AppBar, Button, Container, Grid, Link, makeStyles, Paper, TextField, Toolbar } from '@material-ui/core'
-//import Navigation from '../components/Navigation'
+import { AppBar, Button, Container, Grid, InputBase, Link, makeStyles, Paper, TextField, Toolbar, Typography, fade } from '@material-ui/core'
 import RessourcesList from '../components/ResourcesList';
 import MainCalendar from '../components/MainCalendar';
 import { getResources, getRooms, getUsers, putUser, getEvents, postEvent } from '../utils/api'
 import ModalEvent from '../components/ModalEvent';
 import Assistant from '../components/Assistant';
+import PersonIcon from '@material-ui/icons/Person';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(1)
+  },
+  search: {
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: fade(theme.palette.common.white, 0.15),
+    '&:hover': {
+      backgroundColor: fade(theme.palette.common.white, 0.25),
+    },
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(1),
+      width: 'auto',
+    },
+  },
+  searchIcon: {
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  inputRoot: {
+    color: 'inherit',
+  },
+  inputInput: {
+    padding: theme.spacing(1, 1, 1, 0),
+    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      width: '12ch',
+      '&:focus': {
+        width: '20ch',
+      },
+    },
   }
 }))
 
@@ -17,7 +55,7 @@ const Home = () => {
 
   const [users, setUsers] = useState([])
   const [events, setEvents] = useState([])
-  const [userActif, setUserActif] = useState(1)
+  const [userActif, setUserActif] = useState(2)
   const [rooms, setRooms] = useState([])
   const [resources, setResources] = useState([])
   const [filters, setFilters] = useState({
@@ -76,6 +114,29 @@ const Home = () => {
     fetchRooms()
     fetchUsers()
   }, [])
+
+  const handleAssistant = (e) => {
+    handleConfirmEvent({
+      start: e.start,
+      end: e.end,
+      qty: e.qty,
+      resourceId: "s"+e.room,
+      allDay: false,
+      title: e.title,
+      status: e.status
+    })
+    for (const r of e.resources) {
+      handleConfirmEvent({
+        start: e.start,
+        end: e.end,
+        qty: e.qty,
+        resourceId: "r"+r,
+        allDay: false,
+        title: e.title,
+        status: e.status
+      })
+    }
+  }
 
   const handleChangeFilters = async (type, id) => {
     let newfilters = {...filters}
@@ -172,11 +233,30 @@ const Home = () => {
       <Container maxWidth="xl">
         <AppBar position="static">
           <Toolbar variant="dense">
-            <TextField label="Utilisateur" value={userActif} onChange={e => setUserActif(parseInt(e.target.value))} />
+            <Typography edge="start" variant="h6" className={classes.title}>
+              eDomitille
+            </Typography>
             <Button href="#" onClick={() => setModule("assistant")} color="inherit">Assistant</Button>
             {isSuperAdmin(userActif) &&  
+            <>
               <Button href="#" onClick={() => setModule("calendar")} color="inherit">Calendrier</Button>
+              <Button href="#" onClick={() => setModule("validation")} color="inherit">Validations</Button>
+            </>
             }
+            <div edge="end" className={classes.search}>
+              <div className={classes.searchIcon}>
+                <PersonIcon />
+              </div>
+              <InputBase
+                placeholder="Utilisateur…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                value={userActif} 
+                onChange={e => setUserActif(parseInt(e.target.value))}
+              />
+            </div>
           </Toolbar>
         </AppBar>
         {module === "calendar" &&
@@ -189,7 +269,7 @@ const Home = () => {
             </Grid>
             <Grid item xs={10}>
               <Paper className={classes.root}>
-                <MainCalendar rooms={rooms.filter(room => filters["rooms"].indexOf(room.id) !== -1)} resources={resources.filter(resource => filters["resources"].indexOf(resource.id) !== -1)} handleModifyEvent={handleModifyEvent} handleCreateEvent={handleCreateEvent} events={(events.filter(event => (filters["resources"].indexOf(event.resourceId) !== -1) || filters["rooms"].indexOf(event.resourceId) !== -1))}/>        
+                <MainCalendar rooms={rooms.filter(room => filters["rooms"].indexOf(room.id) !== -1)} resources={resources.filter(resource => filters["resources"].indexOf(resource.id) !== -1)} handleModifyEvent={handleModifyEvent} handleCreateEvent={handleCreateEvent} events={events}/>        
               </Paper>
             </Grid>
           </Grid>
@@ -197,7 +277,7 @@ const Home = () => {
         </>
         }
         {module === "assistant" &&
-          <Assistant events={events} resources={resources} rooms={rooms} isAdmin={isSuperAdmin(userActif)} handleCreateEvent={handleCreateEvent} />
+          <Assistant handleConfirm={handleAssistant} events={events} resources={resources} rooms={rooms} isAdmin={isSuperAdmin(userActif)} handleCreateEvent={handleCreateEvent} />
         }
         </Container>
         

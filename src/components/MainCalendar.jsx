@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Calendar, dateFnsLocalizer, Views } from 'react-big-calendar'
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import format from 'date-fns/format'
@@ -42,14 +42,43 @@ const localizer = dateFnsLocalizer({
 })
 
 const MainCalendar = (props) => {
+  const [cevents, setCevents] = useState([])
+  const [cresources, setCresources] = useState([])
+
+    useEffect(() => {
+      let newEvents = []
+      for (const event of props.events) {
+
+      }
+    }, [props.event])
+
+    useEffect(() => {
+      let newResources = []
+      for (const room of props.rooms) {
+        newResources.push({
+          id:"s"+room.id,
+          label: room.label
+        })
+      }
+      for (const resource of props.resources) {
+        newResources.push({
+          id:"r"+resource.id,
+          label: resource.label
+        })
+      }
+      setCresources(newResources)
+    }, [props.rooms, props.resources])
+
+    console.log(props.events, props.resources)
+
     return (
       <>
         <Calendar
           selectable
-          resources={props.resources}
+          resources={cresources}
           resourceIdAccessor="id"
           resourceTitleAccessor="label"
-          style={{ height: 500,width: '95%' }}
+          style={{ height: 600,width: '95%' }}
           messages={messages}
           culture="fr"
           localizer={localizer}
